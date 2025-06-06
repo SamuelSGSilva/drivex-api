@@ -5,6 +5,7 @@ const cors = require("cors");
 const marcaRoutes = require('./src/routes/marcaRoutes');
 const carroRoutes = require("./src/routes/carroRoutes");
 const acessorioRoutes = require("./src/routes/acessorioRoutes");
+const authRoutes = require("./src/auth/auth.routes")
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use("/api", carroRoutes);
 app.use("/api", acessorioRoutes);
 app.use('/api', marcaRoutes);
+app.use('/auth', authRoutes);
 
 app.get("/", (req, res) => {
   res.send("API Drivex funcionando!");

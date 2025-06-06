@@ -4,7 +4,7 @@ module.exports = {
   async listar() {
     return await Marca.findAll();
   },
-  
+
   async criar(data) {
     return await Marca.create(data);
   },
@@ -28,5 +28,5 @@ module.exports = {
     await marca.destroy();
     return marca;
   }
-  
+
 };
