@@ -40,7 +40,7 @@ jobs:
 
       - name: Get GKE credentials
         run: |
-          gcloud container clusters get-credentials cluster-prod-drivex --zone us-east1-b --project ${{ secrets.GCP_PROJECT_PROD }}
+          gcloud container clusters get-credentials cluster-prod-drivex --zone us-east1 --project ${{ secrets.GCP_PROJECT_PROD }}
 
       - name: Deploy to GKE
         run: |
