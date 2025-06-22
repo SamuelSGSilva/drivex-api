@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const marcaService = require('../services/marcaService');
-const { UniqueConstraintError } = require('sequelize');
 
 module.exports = {
   async listar(req, res) {
@@ -9,16 +8,8 @@ module.exports = {
     res.json(marcas);
   },
   async criar(req, res) {
-     try {
     const marca = await marcaService.criar(req.body);
     res.status(201).json(marca);
-  } catch (err) {
-    if (err instanceof UniqueConstraintError || err.status === 409){
-      return res.status(409).json({ error: err.message || 'Marca já existe.' });
-    }
-    console.error(err);
-    res.status(500).json({ error: 'Erro interno' });
-  }
   },
 
    async buscarPorId(req, res) {

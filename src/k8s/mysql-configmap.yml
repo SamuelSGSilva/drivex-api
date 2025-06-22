@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-init-configmap
+data:
+  init.sql: |
+    CREATE DATABASE IF NOT EXISTS drivex;
+    DROP USER IF EXISTS 'drivex'@'%';
+    CREATE USER 'drivex'@'%' IDENTIFIED BY 'drivex';
+    GRANT ALL PRIVILEGES ON drivex.* TO 'drivex'@'%';
+    FLUSH PRIVILEGES;

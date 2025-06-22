@@ -1,0 +1,28 @@
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: drivex-api-deployment
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: drivex-api
+    template:
+      metadata:
+        labels:
+          app: drivex-api
+      spec:
+        containers:
+          - name: drivex-api
+            image: gcr.io/drivex-stage/drivex-api:latest
+            ports:
+              - containerPort: 3000
+            env:
+              - name: DB_HOST
+                value: "mysql-service"
+              - name: DB_USER
+                value: "drivex"
+              - name: DB_PASSWORD
+                value: "drivex"
+              - name: DB_NAME
+                value: "drivex"
