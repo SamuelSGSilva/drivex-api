@@ -38,16 +38,16 @@ jobs:
         run: |
           docker push gcr.io/${{ secrets.GCP_PROJECT_PROD }}/drivex-api:latest
 
-      - name: Install gke-gcloud-auth-plugin
-        run: |
-          curl -L -o gke-gcloud-auth-plugin-linux-amd64.tar.gz https://github.com/GoogleCloudPlatform/gke-gcloud-auth-plugin/releases/latest/download/gke-gcloud-auth-plugin-linux-amd64.tar.gz
-          tar -xvf gke-gcloud-auth-plugin-linux-amd64.tar.gz
-          sudo mv gke-gcloud-auth-plugin /usr/local/bin/
-          gke-gcloud-auth-plugin --version
-
       - name: Get GKE credentials
         run: |
           gcloud container clusters get-credentials cluster-prod-drivex --region us-east1 --project ${{ secrets.GCP_PROJECT_PROD }}
+
+      - name: Install gke-gcloud-auth-plugin
+        run: |
+          curl -L -o gke-gcloud-auth-plugin-linux-amd64.tar.gz https://github.com/GoogleCloudPlatform/gke-gcloud-auth-plugin/releases/download/v0.11.0/gke-gcloud-auth-plugin-linux-amd64.tar.gz
+          tar -xvf gke-gcloud-auth-plugin-linux-amd64.tar.gz
+          sudo mv gke-gcloud-auth-plugin /usr/local/bin/
+          gke-gcloud-auth-plugin --version
 
       - name: Deploy to GKE
         run: |
