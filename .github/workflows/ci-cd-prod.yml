@@ -1,4 +1,4 @@
-name: Deploy to Production
+name: Deploy Drivex-Produção
 
 on:
   push:
@@ -39,9 +39,8 @@ jobs:
           docker push gcr.io/${{ secrets.GCP_PROJECT_PROD }}/drivex-api:latest
 
       - name: Get GKE credentials
-  run: |
-    gcloud container clusters get-credentials cluster-prod-drivex --region us-east1 --project drivex-prod
-
+        run: |
+          gcloud container clusters get-credentials cluster-prod-drivex --region us-east1 --project drivex-prod
 
       - name: Deploy to GKE
         run: |
