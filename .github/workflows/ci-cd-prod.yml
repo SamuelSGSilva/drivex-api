@@ -36,11 +36,10 @@ jobs:
         run: |
           docker push gcr.io/${{ secrets.GCP_PROJECT_PROD }}/drivex-api:latest
 
-      - name: Get GKE credentials
-        run: |
-          gcloud container clusters get-credentials ${{ secrets.GKE_CLUSTER_NAME_PROD }} \
-            --zone ${{ secrets.GKE_CLUSTER_ZONE_PROD }} \
-            --project ${{ secrets.GCP_PROJECT_PROD }}
+     - name: Get GKE credentials
+  run: |
+    gcloud container clusters get-credentials cluster-prod-drivex --zone us-east1-b --project drivex-prod
+
 
       - name: Deploy to GKE
         run: |
