@@ -1,0 +1,38 @@
+name: CI/CD - Stage
+
+on:
+  push:
+    branches:
+      - main  # Ou troque para a branch que quiser usar no stage
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout do código
+        uses: actions/checkout@v3
+
+      - name: 🐳 Autenticar no Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS_STAGE }}'
+
+      - name: 📦 Configurar Docker para GCR
+        run: gcloud auth configure-docker
+
+      - name: 🏗️ Build da imagem Docker
+        run: docker build -t gcr.io/drivex-stage/drivex-api:latest .
+
+      - name: 🚀 Push para o GCR
+        run: docker push gcr.io/drivex-stage/drivex-api:latest
+
+      - name: ☸️ Configurar kubectl
+        uses: google-github-actions/get-gke-credentials@v1
+        with:
+          cluster_name: cluster-stage-drivex
+          location: us-east1
+          project_id: drivex-stage
+
+      - name: 🚢 Deploy para o cluster
+        run: kubectl apply -f src/k8s/

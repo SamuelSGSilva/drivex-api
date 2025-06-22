@@ -1,0 +1,25 @@
+[33mec67cd1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mstage-prod[m[33m)[m 2312
+[33m8ff1b5a[m Arquivos-YML-Configurados
+[33m79eefc7[m fasfs
+[33m9379911[m 2222
+[33ma17c2b2[m Track terraform provider binary with LFS
+[33m6d8a07d[m Remove arquivos grandes do histórico do Terraform
+[33m56eba5a[m Remove arquivos ignorados do controle e atualiza .gitignore
+[33m2d726d8[m 22222
+[33me27559b[m Remove arquivos terraform e exe do controle
+[33m084c2ec[m Correção-de-tamanho-de-arquivo
+[33m5b1f0e2[m Removendo arquivos grandes e binários do controle de versão
+[33m2f30d7a[m Subir-arquivos
+[33m5c7b222[m Stage-Finalizado-1
+[33m9e4cc2a[m Stage-Finalizado
+[33mcf59d07[m 231223
+[33m8f45fb8[m 23123
+[33medf1a5c[m Remove arquivos grandes e atualiza .gitignore
+[33m1c53f2b[m erro-de-tamanho-de-arquivo-arrumado-4
+[33m413778c[m erro-de-tamanho-de-arquivo-arrumado-3
+[33m681836c[m erro-de-tamanho-de-arquivo-arrumado-2
+[33m92654a9[m erro-de-tamanho-de-arquivo-arrumado
+[33mc484c92[m Arquivos-mensal-adicionados
+[33mb854530[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m tirado .env do .gitgnore
+[33mdb9ddf8[m adicionado as classes para autenticação
+[33mba88c4d[m Backend drivex criado

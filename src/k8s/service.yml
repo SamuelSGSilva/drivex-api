@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-grafana
+  namespace: default  # ou namespace correto
+spec:
+  selector:
+    app: grafana
+  ports:
+    - protocol: TCP
+      port: 3000        # porta externa
+      targetPort: 3000  # porta do container
+  type: LoadBalancer

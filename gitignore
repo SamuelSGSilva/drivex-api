@@ -1,0 +1,49 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+*.backup
+*.log
+override.tf
+override.tf.json
+terraform.tfvars
+terraform.tfvars.json
+*.tfplan
+
+# Ambientes (se usar pastas .stage e .prod)
+.stage/
+.prod/
+
+# Variáveis de ambiente
+.env
+.env.*
+
+# Arquivos grandes
+*.exe
+*.zip
+*.tar.gz
+
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+*.json
+*.key
+*.pem

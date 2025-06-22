@@ -1,0 +1,27 @@
+name: Provision Infra - Stage
+
+on:
+  push:
+    paths:
+      - 'src/prod/'
+      - '.github/workflows/infra-stage.yml'
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Authenticate GCP
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS_STAGE }}'
+
+      - name: Terraform Init
+        run: cd terraform/stage && terraform init
+
+      - name: Terraform Apply
+        run: cd terraform/stage && terraform apply -auto-approve
