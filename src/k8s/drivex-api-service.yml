@@ -3,11 +3,10 @@ kind: Service
 metadata:
   name: drivex-api-service
 spec:
-  type: NodePort          # Adiciona isso para expor externamente
+  type: LoadBalancer   # Expor com IP externo
   selector:
     app: drivex-api
   ports:
     - protocol: TCP
-      port: 80           # Porta do serviço interna
-      targetPort: 8080   # Porta do container
-      nodePort: 32000    # Porta externa no nó (entre 30000 e 32767)
+      port: 80          # Porta que será exposta publicamente
+      targetPort: 8080  # Porta do container
