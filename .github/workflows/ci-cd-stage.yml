@@ -45,6 +45,10 @@ jobs:
           location: us-east1
           project_id: ${{ secrets.GCP_PROJECT_STAGE }}
 
-      - name: Deploy to GKE
+      - name: Deploy to GKE (Stage)
         run: |
-          kubectl apply -f src/k8s/
+          kubectl apply -f src/k8s/deployment-stage.yml
+          kubectl apply -f src/k8s/mysql-deployment.yml
+          kubectl apply -f src/k8s/mysql-service.yml
+          kubectl apply -f src/k8s/mysql-configmap.yml
+          kubectl apply -f src/k8s/drivex-api-service.yml
