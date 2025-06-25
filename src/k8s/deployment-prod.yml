@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: drivex-api-deployment
-  namespace: monitoramento-prod   # <--- aqui
+  name: drivex-deployment
+  namespace: monitoramento-prod
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: drivex-api
+      app: drivex
   template:
     metadata:
       labels:
-        app: drivex-api
+        app: drivex
     spec:
       containers:
         - name: drivex-api
@@ -27,3 +27,8 @@ spec:
               value: "drivex"
             - name: DB_NAME
               value: "drivex"
+
+        - name: drivex-frontend
+          image: gcr.io/drivex-prod/drivex-frontend:latest
+          ports:
+            - containerPort: 80

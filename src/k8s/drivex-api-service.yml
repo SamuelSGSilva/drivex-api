@@ -9,4 +9,4 @@ spec:
   ports:
     - protocol: TCP
       port: 80          # Porta que será exposta publicamente
-      targetPort: 8080  # Porta do container
+      targetPort: 3000  # Porta do container
